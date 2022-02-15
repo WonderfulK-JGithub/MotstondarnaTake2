@@ -35,6 +35,8 @@ public class CameraController : MonoBehaviour// av K-J
 
         Cursor.lockState = CursorLockMode.Locked;
         distanceFromTarget = maxDistanceFromTarget;
+
+        target = FindObjectOfType<BallMovement>();
     }
     void Update()
     {
