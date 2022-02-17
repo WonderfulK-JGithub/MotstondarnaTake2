@@ -39,8 +39,8 @@ Material:
     - _WaveHeight: 0.02
     - _WaveSpeed: 0.1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.11466887, b: 0.0141509175, a: 1}
-    - _RippleColor: {r: 0.990566, g: 0.845937, b: 0.38781592, a: 1}
+    - _BaseColor: {r: 1.5157166, g: 0.1723756, b: 0.023775948, a: 1}
+    - _RippleColor: {r: 19.468573, g: 16.71647, b: 7.6447277, a: 1}
     - _RippleSpin: {r: 1, g: 1, b: 0, a: 0}
     - _WaveTiling: {r: 50, g: 50, b: 0, a: 0}
   m_BuildTextureStacks: []
