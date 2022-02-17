@@ -10,6 +10,10 @@ public class BossManager : MonoBehaviour
 
     List<BaseEnemy> currentEnemies = new List<BaseEnemy>();
 
+    [SerializeField] Animator frontDoor;
+    [SerializeField] Animator leftDoor;
+    [SerializeField] Animator rightDoor;
+
     BossState state;
 
     private void Awake()
@@ -38,7 +42,10 @@ public class BossManager : MonoBehaviour
 
                     print("Enemies Cleared");
 
-                    BossEnemy.current.smash = true;
+                    BossEnemy.current.anim.SetTrigger("StartAttacking");
+
+                    leftDoor.Play("Door_Open");
+                    rightDoor.Play("Door_Open");
                 }
                 break;
         }
@@ -60,6 +67,10 @@ public class BossManager : MonoBehaviour
     {
         state = BossState.EnemyWave;
         SpawnWave();
+        BossEnemy.current.anim.SetTrigger("GetHurt");
+
+        leftDoor.Play("Door_Close");
+        rightDoor.Play("Door_Close");
     }
 
     enum BossState

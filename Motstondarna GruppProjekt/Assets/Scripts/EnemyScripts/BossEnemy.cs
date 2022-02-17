@@ -13,34 +13,21 @@ public class BossEnemy : MonoBehaviour
     [SerializeField] Vector3 leftShockWavePos; //btw det är vänster för bossens POV, inte spelarens
     [SerializeField] Vector3 rightShockWavePos;
 
-    public bool smash;
-
-    bool left;
-    float timer;
+    public Animator anim;
 
     private void Awake()
     {
         current = this;
+        anim = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        if(smash)
-        {
-            timer -= Time.deltaTime;
-            if(timer <= 0)
-            {
-                left = !left;
-                timer = 4f;
-                CreateShockWave(left);
-            }
-        }
-    }
+    
 
-    void CreateShockWave(bool _left)
+    void CreateShockWave(int dir)
     {
-        if (_left) Instantiate(shockWavePrefab, leftShockWavePos,Quaternion.identity);
-        else Instantiate(shockWavePrefab, rightShockWavePos, Quaternion.identity);
+        bool _left = dir == -1;
+        if (_left) Instantiate(shockWavePrefab, leftShockWavePos,Quaternion.Euler(0f,90f,0f));
+        else Instantiate(shockWavePrefab, rightShockWavePos, Quaternion.Euler(0f, 90f, 0f));
 
     }
 
@@ -49,12 +36,10 @@ public class BossEnemy : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             BallHealth ballHD = collision.gameObject.GetComponent<BallHealth>();
-
-            if(ballHD.aboveKillSpeed)
+            if (ballHD.aboveKillSpeed)
             {
                 BallHealth.current.BossDamaged(bossKnockback);
                 BossManager.current.BossDamaged();
-                smash = false;
             }
         }
     }
