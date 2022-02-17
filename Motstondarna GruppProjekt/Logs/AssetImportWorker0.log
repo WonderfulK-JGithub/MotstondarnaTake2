@@ -369,3 +369,34 @@ Received Import Request.
 Start importing Assets/Prefabs/Enemies/Enemies/EndKäglor.prefab using Guid(34341e79804cf574dbb8b0c54fd5aed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '012cc70dbbc24691b1923ced5fe0c60e') in 0.023563 seconds
   Import took 0.033838 seconds .
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.008642 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.15 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.545 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.15 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2958 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 157.0 MB.
+System memory in use after: 157.2 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 3719.
+Total: 6.146100 ms (FindLiveObjects: 0.694200 ms CreateObjectMapping: 0.326700 ms MarkObjects: 5.075900 ms  DeleteObjects: 0.046700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 8397.821320 seconds.
+  path: Assets/Prefabs/Jump pad.prefab
+  artifactKey: Guid(6d2b46f3c5b44b244922d38a7bfb3302) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Jump pad.prefab using Guid(6d2b46f3c5b44b244922d38a7bfb3302) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '919aeb1fe3b5cc0e6486b341d783d94c') in 0.474474 seconds
+  Import took 0.491121 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
