@@ -74,11 +74,11 @@ public class LevelSelectManager : MonoBehaviour
         {
             case LevelSelectState.Selecting:
                 #region
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) //La till så att man kan använda A och D också - Max
                 {
                     levelIndex++;
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
                 {
                     levelIndex--;
                 }
