@@ -6,9 +6,12 @@ public class Pause : MonoBehaviour
 
     public static bool gamePaused;
 
+    public static AudioSource source;
+
     private void Awake()
     {
         gamePaused = false;
+        source = GetComponent<AudioSource>();
     }
 
     public void OpenWindow(int window)
@@ -17,6 +20,8 @@ public class Pause : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0;
         gamePaused = true;
+
+        source.Pause();
 
         for (int i = 0; i < windows.Length; i++)
         {
@@ -35,6 +40,8 @@ public class Pause : MonoBehaviour
         {
             windows[i].SetActive(false);
         }
+
+        source.Play();
     }
     public void Restart()
     {

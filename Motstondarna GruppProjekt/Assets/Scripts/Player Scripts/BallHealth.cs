@@ -118,6 +118,8 @@ public class BallHealth : BallMovement // av K-J
 
     public void GameOver()
     {
+        if (Pause.gamePaused) return;
+
         enabled = false;
 
         Cursor.lockState = CursorLockMode.None;
@@ -128,10 +130,8 @@ public class BallHealth : BallMovement // av K-J
 
         Invoke("Transition", deathTime);
         Pause.gamePaused = true;
+        Pause.source.Stop();
         FindObjectOfType<Pause>().enabled = false;
-
-        GameObject music = GameObject.FindGameObjectWithTag("Music");
-        if (music != null) Destroy(music);
     }
 
     void Transition()

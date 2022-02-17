@@ -19,6 +19,12 @@ public class BossManager : MonoBehaviour
     private void Awake()
     {
         current = this;
+        
+    }
+
+    private void Start()
+    {
+        BossDamaged();
     }
 
     void Update()
@@ -42,7 +48,7 @@ public class BossManager : MonoBehaviour
 
                     print("Enemies Cleared");
 
-                    BossEnemy.current.anim.SetTrigger("StartAttacking");
+                    BossEnemy.current.anim.SetTrigger("StartAttack");
 
                     leftDoor.Play("Door_Open");
                     rightDoor.Play("Door_Open");
