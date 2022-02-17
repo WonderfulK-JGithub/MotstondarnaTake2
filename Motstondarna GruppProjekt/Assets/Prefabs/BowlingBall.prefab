@@ -5031,7 +5031,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   state: 0
   maxHealth: 3
-  invinceTime: 0.5
+  invinceTime: 1
   deathTime: 2
   healthImage: {fileID: 3472253860673514688}
   healthSprites:

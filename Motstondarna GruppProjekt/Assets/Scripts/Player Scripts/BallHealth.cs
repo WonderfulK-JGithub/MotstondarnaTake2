@@ -129,6 +129,9 @@ public class BallHealth : BallMovement // av K-J
         Invoke("Transition", deathTime);
         Pause.gamePaused = true;
         FindObjectOfType<Pause>().enabled = false;
+
+        GameObject music = GameObject.FindGameObjectWithTag("Music");
+        if (music != null) Destroy(music);
     }
 
     void Transition()

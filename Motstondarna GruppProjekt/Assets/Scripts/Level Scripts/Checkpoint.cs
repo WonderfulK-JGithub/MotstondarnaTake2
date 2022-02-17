@@ -13,6 +13,7 @@ public class Checkpoint : MonoBehaviour
                 PlayerPrefs.SetInt("progress", checkpointID); // ändrar ens progressvärde - Anton
                 ps.Play();
                 SaveSystem.current.Save();
+                SoundManagerScript.PlaySound("CheckPoint");
             }
         } // checkpoints reagerar inte om man har högre progress-värde än checkpointID:t. Detta innebär att man inte kan gå tillbaka till gamla checkpoints. - Anton
     }

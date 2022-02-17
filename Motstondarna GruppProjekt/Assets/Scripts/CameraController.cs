@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour// av K-J
             rotationX += mouseX * mouseSence;
             rotationY += mouseY * -mouseSence;
 
-            rotationY = Mathf.Clamp(rotationY, 0, 80f);//begränsar hur mycket man kan rotera kameran upp och ner
+            rotationY = Mathf.Clamp(rotationY, 8f, 80f);//begränsar hur mycket man kan rotera kameran upp och ner
 
             Vector3 nextRotation = new Vector3(rotationX, rotationY);//rotationen kameran ska gå mot
             currentRotation = Vector3.SmoothDamp(currentRotation, nextRotation, ref smoothVelocity, smoothTime);//i vårt fall har vi ingen "smooth" camera så vi behöver egentligen inte detta

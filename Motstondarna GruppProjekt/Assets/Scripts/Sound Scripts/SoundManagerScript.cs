@@ -4,13 +4,13 @@ using UnityEngine;
 //Theo
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip AmbientWind, Checkpoint, Click, Dash, JumpPad, K‰gglaDamage, Landa, PowerUp, Rolling, R‰nna, Skada, Laser÷gon, RocketFiende, Coins, Hoppa,GameOver,WaterSplash,LavaSplash; //Definerar audiclippen /Theo
+    public static AudioClip AmbientWind, Checkpoint, Click, Dash, JumpPad, K‰gglaDamage, Landa, PowerUp, Rolling, R‰nna, Skada, Laser÷gon, RocketFiende, Coins, Hoppa,GameOver,WaterSplash,LavaSplash,Spin; //Definerar audiclippen /Theo
     static AudioSource audioSrc;
 
-    void Start() //Parar ihop r‰tt variebel med motsvarande ljudfil
+    void Awake() //Parar ihop r‰tt variebel med motsvarande ljudfil
     {
         AmbientWind = Resources.Load<AudioClip>("AmbientWind");
-        Checkpoint = Resources.Load<AudioClip>("Checkoint");
+        Checkpoint = Resources.Load<AudioClip>("CheckPoint");
         Click = Resources.Load<AudioClip>("Click");
         Dash = Resources.Load<AudioClip>("Dash2");
         JumpPad = Resources.Load<AudioClip>("JumpPad2");
@@ -27,6 +27,7 @@ public class SoundManagerScript : MonoBehaviour
         GameOver = Resources.Load<AudioClip>("Game Over");
         WaterSplash = Resources.Load<AudioClip>("WaterSplash");
         LavaSplash = Resources.Load<AudioClip>("LavaSplash");
+        Spin = Resources.Load<AudioClip>("Spin");
 
 
         audioSrc = GetComponent<AudioSource>();
@@ -38,7 +39,7 @@ public class SoundManagerScript : MonoBehaviour
             case "AmbientWind":
                 audioSrc.PlayOneShot(AmbientWind);
                 break;
-            case "Checkpoint":
+            case "CheckPoint":
                 audioSrc.PlayOneShot(Checkpoint);
                 break;
             case "Click":
@@ -88,6 +89,9 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "LavaSplash":
                 audioSrc.PlayOneShot(LavaSplash);
+                break;
+            case "Spin":
+                audioSrc.PlayOneShot(Spin);
                 break;
         }
     }

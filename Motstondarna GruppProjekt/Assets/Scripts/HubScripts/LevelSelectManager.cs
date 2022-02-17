@@ -108,10 +108,12 @@ public class LevelSelectManager : MonoBehaviour
                 if(unlockTimer <= 0f)
                 {
                     levelNumbers[unlockedLevel].color = unlockedColor;
-                    unlockPS.transform.position = levelNumbers[unlockedLevel].transform.position;
+                    unlockPS.transform.position = levelNumbers[unlockedLevel].transform.position + new Vector3(-1f,1.5f,0f);
                     unlockPS.Play();
                     state = LevelSelectState.Selecting;
                     levelIndex = unlockedLevel;
+
+                    SoundManagerScript.PlaySound("CheckPoint");
 
                     SaveSystem.current.Save();
                 }
@@ -190,6 +192,8 @@ public class LevelSelectManager : MonoBehaviour
 
         cam.targetPoint = levelCameraPoints[level];
         unlockTimer = unlockTime;
+
+        SoundManagerScript.PlaySound("Spin");
     }
 }
 
