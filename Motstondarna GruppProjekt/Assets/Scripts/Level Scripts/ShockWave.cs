@@ -22,7 +22,7 @@ public class ShockWave : MonoBehaviour
     {
         Vector3 newPos = transform.position;
 
-        newPos.z += horizontalSpeed * Time.fixedDeltaTime;
+        newPos.x += horizontalSpeed * Time.fixedDeltaTime;
 
         shockWaveTime -= Time.fixedDeltaTime;
 
