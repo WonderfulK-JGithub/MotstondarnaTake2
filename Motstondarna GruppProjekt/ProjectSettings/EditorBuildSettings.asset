@@ -33,6 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/AAA Banor/Bana 5.unity
     guid: 9e3e962e9a788da46a3b2e808c8abfae
   - enabled: 1
-    path: Assets/Scenes/anton.unity
+    path: Assets/Scenes/AAA Banor/bonusbana.unity
     guid: 2dce880d0d18e4c44b9936eb101b721d
   m_configObjects: {}
