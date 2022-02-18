@@ -124,6 +124,8 @@ public class RocketEnemy : MonoBehaviour
 
     void Explode()
     {
+        SoundManagerScript.PlaySound("Explosion"); //Spelar explosion-ljud - Max
+
         //Kollar om tillräckligt nära spelaren för att skada den - Max
         if (Vector3.Distance(transform.position, player.position) < rocketExplodeRadius)
         {
