@@ -2,9 +2,10 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
+// den här koden är kopierad från ett forum, jag har väldigt liten aning om vad varje rad gör separat, men tillsammans sorterar de alla children ur en parent i bokstavsordning. - Anton
+// pga build errors så kommentifieras koden innan builds, så det är med stor sannolikhet att du ser koden som en stor kommentar. - Anton
 public class SortChildren : MonoBehaviour
 {
-
 	[ContextMenu("Sort")]
 	public void SortChildrenByName()
 	{

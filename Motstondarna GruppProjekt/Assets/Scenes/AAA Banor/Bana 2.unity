@@ -2302,7 +2302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4001649732988327516, guid: ea092ed1c30a8194b9602000cb271e31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.166763
+      value: -32.166763
       objectReference: {fileID: 0}
     - target: {fileID: 4001649732988327516, guid: ea092ed1c30a8194b9602000cb271e31, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8745,6 +8745,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1612676332370606274, guid: 3392467f112889749bf4825799b5ad32, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d1d4828c4a00ca346b50081bba431039, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3392467f112889749bf4825799b5ad32, type: 3}
 --- !u!1001 &392711300
@@ -8760,7 +8764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2463131175938460995, guid: 86eca7d7eb50334438c7105a941bafaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42
+      value: -38
       objectReference: {fileID: 0}
     - target: {fileID: 2463131175938460995, guid: 86eca7d7eb50334438c7105a941bafaa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15357,6 +15361,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
+      propertyPath: yPosToDie
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 3177112656898772255, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: m_Name
       value: LaserEnemy
@@ -16284,6 +16292,10 @@ PrefabInstance:
     - target: {fileID: 6040162914256360377, guid: 109031e413fec4841bae447639e59a69, type: 3}
       propertyPath: m_Name
       value: WanderingEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040162914256360380, guid: 109031e413fec4841bae447639e59a69, type: 3}
+      propertyPath: yPosToDie
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6040162914256360380, guid: 109031e413fec4841bae447639e59a69, type: 3}
       propertyPath: wanderingAreaSize
@@ -18014,6 +18026,10 @@ PrefabInstance:
     - target: {fileID: 3177112656898772240, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
+      propertyPath: yPosToDie
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: wanderingAreaSize
@@ -29542,6 +29558,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
+      propertyPath: yPosToDie
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: wanderingAreaSize
       value: 5.27
       objectReference: {fileID: 0}
@@ -32899,6 +32919,10 @@ PrefabInstance:
     - target: {fileID: 3177112656898772240, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
+      propertyPath: yPosToDie
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: wanderingAreaSize
@@ -38557,6 +38581,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
+      propertyPath: yPosToDie
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: wanderingAreaSize
       value: 4.29
       objectReference: {fileID: 0}
@@ -39468,6 +39496,10 @@ PrefabInstance:
     - target: {fileID: 3177112656898772240, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
+      propertyPath: yPosToDie
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: wanderingAreaSize
@@ -42308,6 +42340,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
+      propertyPath: yPosToDie
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: wanderingAreaSize
       value: 4.15
       objectReference: {fileID: 0}
@@ -44221,6 +44257,10 @@ PrefabInstance:
     - target: {fileID: 3177112656898772240, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
+      propertyPath: yPosToDie
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3177112656898772241, guid: c8d95511f058ef04ea11c2060506bc2b, type: 3}
       propertyPath: wanderingAreaSize
@@ -46413,6 +46453,10 @@ PrefabInstance:
     - target: {fileID: 6040162914256360377, guid: 109031e413fec4841bae447639e59a69, type: 3}
       propertyPath: m_Name
       value: WanderingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040162914256360380, guid: 109031e413fec4841bae447639e59a69, type: 3}
+      propertyPath: yPosToDie
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6040162914256360380, guid: 109031e413fec4841bae447639e59a69, type: 3}
       propertyPath: wanderingAreaSize
