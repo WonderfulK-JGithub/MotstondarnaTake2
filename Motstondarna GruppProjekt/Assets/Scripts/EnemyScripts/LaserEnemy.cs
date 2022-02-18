@@ -175,6 +175,7 @@ public class LaserEnemy : MonoBehaviour
 
     public void TurnOnLasers()
     {
+
         anim.Play("LaserAlerted");
         alerted = true; //Så att den börajr rotera mot spelaren i animationen - Max
 
@@ -197,6 +198,7 @@ public class LaserEnemy : MonoBehaviour
 
         //Ljudeffekt
         //SoundManagerScript.PlaySound("LaserÖgon");
+        if(currentSound != null)Destroy(currentSound.gameObject);
         currentSound = AdvancedAudioManager.current.PlayLoopedSound(AdvancedAudioManager.current.audioClips[(int)AUDIO.LASER]);
 
         //Spawnar lasrar på båda ögonen - Max
@@ -212,6 +214,7 @@ public class LaserEnemy : MonoBehaviour
 
     public void TurnOffLasers()
     {
+
         lasersOn = false;
 
         coolDownTimer = laserCooldown;

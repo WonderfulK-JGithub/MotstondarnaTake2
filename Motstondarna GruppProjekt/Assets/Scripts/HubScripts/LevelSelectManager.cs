@@ -174,7 +174,7 @@ public class LevelSelectManager : MonoBehaviour
 
         
 
-        if (GameSaveInfo.currentLevel != -1 && GameSaveInfo.current.levelProgress == GameSaveInfo.currentLevel)
+        if (GameSaveInfo.currentLevel != -1 && GameSaveInfo.current.levelProgress == GameSaveInfo.currentLevel && GameSaveInfo.currentLevel < 5)
         {
             GameSaveInfo.current.levelProgress++;
 

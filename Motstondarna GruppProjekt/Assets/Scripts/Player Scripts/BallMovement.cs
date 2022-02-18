@@ -171,6 +171,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
                     {
                         state = PlayerState.Free;
                         chargeParticle.Stop();
+                        rb.useGravity = true;
                     }
                 }
                 #endregion

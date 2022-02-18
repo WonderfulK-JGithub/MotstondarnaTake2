@@ -4892,7 +4892,7 @@ MonoBehaviour:
   tilCanCheckForPlayer: 1
   chasingSpeed: 5
   rotationSpeed: 2
-  dontPauseAnim: 0
+  dontStandStill: 0
   yPosToDie: -10
   isChasingPlayer: 0
   overrideChasing: 0
@@ -4974,7 +4974,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!95 &3577710622393957503
 Animator:
   serializedVersion: 3

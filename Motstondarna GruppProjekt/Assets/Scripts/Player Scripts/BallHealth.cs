@@ -46,12 +46,11 @@ public class BallHealth : BallMovement // av K-J
         
     }
 
-    // Update is called once per frame
     public override void Update()
     {
         base.Update();
 
-        if(invinceable)
+        if(invinceable)//ger bollen en annan färg när den tar skada
         {
             float _time = 1f - (invinceTimer / invinceTime);
 
@@ -87,18 +86,19 @@ public class BallHealth : BallMovement // av K-J
         CameraController.current.ScreenShake();
 
         currentSpeed = knockBack;
-        if(knockBack != Vector3.zero)rb.velocity = new Vector3(currentSpeed.x, rb.velocity.y, currentSpeed.z);
+        if(knockBack != Vector3.zero)rb.velocity = new Vector3(currentSpeed.x, rb.velocity.y, currentSpeed.z);//om det inte är någon knockback ska bollens hastighet inte ändras
 
-        healthPoints -= damage;
+        healthPoints -= damage;//tar bort hp
+
+        //uppdaterar health UI
         NewHealth();
-
         healthImageAnim.Play("HP_Image_Hurt");
 
-        if(healthPoints <= 0)
+        if(healthPoints <= 0)//om man har noll hp är det game over
         {
             GameOver();
             invinceable = true;
-            this.enabled = false;
+            enabled = false;
         }
         else
         {
@@ -141,6 +141,7 @@ public class BallHealth : BallMovement // av K-J
 
     private new void OnTriggerEnter(Collider other)
     {
+        //imagine använda interface
         base.OnTriggerEnter(other);
 
         if (other.gameObject.CompareTag("Heart"))
