@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// detta skript används inte längre då vi använder probuild för att bygga banorna, detta var aktuellt innan då banorna var byggda av block och man inte ville rendera alla faces på samma gång.
+
 public class GroundSettings : MonoBehaviour
 {
     List<Vector3> groundCoords = new List<Vector3>(); // hämtar koordinaterna för varje markobjekt
