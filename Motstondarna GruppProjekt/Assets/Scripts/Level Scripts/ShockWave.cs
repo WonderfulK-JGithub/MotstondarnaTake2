@@ -16,6 +16,7 @@ public class ShockWave : MonoBehaviour
     private void Awake()
     {
         ogYPos = transform.position.y;
+        verticalTarget = ogYPos + 5;
     }
 
     void FixedUpdate()

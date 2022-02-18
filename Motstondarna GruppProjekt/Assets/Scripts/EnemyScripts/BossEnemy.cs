@@ -30,12 +30,11 @@ public class BossEnemy : MonoBehaviour
         else Instantiate(shockWavePrefab, rightShockWavePos, Quaternion.Euler(0f, 90f, 0f));
 
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            BallHealth ballHD = collision.gameObject.GetComponent<BallHealth>();
+            BallHealth ballHD = other.gameObject.GetComponent<BallHealth>();
             if (ballHD.aboveKillSpeed)
             {
                 BallHealth.current.BossDamaged(bossKnockback);
