@@ -27,13 +27,11 @@ public class BossManager : MonoBehaviour
 
     List<GameObject> laserEnemiesOnPillar = new List<GameObject>();
 
-    AudioSource source;
-
+    [SerializeField] AudioClip clip;
 
     private void Awake()
     {
         current = this;
-        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -88,7 +86,8 @@ public class BossManager : MonoBehaviour
         SpawnWave();
 
         Pause.source.Stop();
-        source.Play();
+        Pause.source.clip = clip;
+        Pause.source.Play();
     }
 
 
@@ -106,19 +105,24 @@ public class BossManager : MonoBehaviour
 
     public void BossDamaged()
     {
+        
+
         currentWave++;
 
         if(currentWave == 3)
         {
+            SoundManagerScript.PlaySound("BossDeath");
             state = BossState.End;
             BossEnemy.current.Die();
             theEnd.SetActive(true);
-            source.Stop();
+            Pause.source.Stop();
         }
         else
         {
+            SoundManagerScript.PlaySound("BossDamaged");
             SpawnWave();
             BossEnemy.current.anim.SetTrigger("GetHurt");
+            BossEnemy.current.anim.speed *= BossEnemy.current.speedIncrease;
         }
 
         
@@ -126,6 +130,8 @@ public class BossManager : MonoBehaviour
         leftDoor.Play("Door_Close");
         rightDoor.Play("Door_Close");
     }
+
+    
 
     enum BossState
     {

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KlotMaterial69
+  m_Shader: {fileID: -6465566751694194690, guid: b6d14cbc59532874a8e1e224be9f1070, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_360c648415744412a7f735a9ca1854de: 0.835
+    - Vector1_6ac59ca3754a4dee86fcb3eabf2ec750: 0.2
+    - Vector1_74170ff734be4ff7b690d73a975415d7: 0.111
+    - _DissolveTime: 1
+    m_Colors:
+    - Color_1213e812ab0f4b19a488a623b7ec5153: {r: 0.7264151, g: 0, b: 0, a: 1}
+    - Color_42c7b95d876745c78c561c1bdd9195f3: {r: 16.94838, g: 0.79861474, b: 0.2662049, a: 0}
+    - _Color: {r: 0.7264151, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []

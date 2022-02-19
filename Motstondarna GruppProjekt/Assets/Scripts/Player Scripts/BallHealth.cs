@@ -22,13 +22,15 @@ public class BallHealth : BallMovement // av K-J
     public Color invinceColor;//vilken färg man har när man är odödlig (ändras av en animation som bollen har)
     Color defaultColor;
 
+    public MeshRenderer rend;
+    [SerializeField] float dissolveSpeed;
     int healthPoints;
 
     float invinceTimer;
 
     bool invinceable;
 
-    public MeshRenderer rend;
+    
 
 
     public override void Awake()
@@ -39,7 +41,7 @@ public class BallHealth : BallMovement // av K-J
 
         healthPoints = maxHealth;
         //rend = GetComponent<MeshRenderer>();
-        defaultColor = rend.material.color;
+        defaultColor = rend.material.GetColor("_Color");
 
         NewHealth();
 
@@ -99,6 +101,11 @@ public class BallHealth : BallMovement // av K-J
             GameOver();
             invinceable = true;
             enabled = false;
+            StartCoroutine(Dissolve());
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.useGravity = false;
+            
         }
         else
         {
@@ -167,6 +174,18 @@ public class BallHealth : BallMovement // av K-J
             //waterSplashPS.transform.position = transform.position;
 
             GameOver();
+        }
+    }
+
+    IEnumerator Dissolve()
+    {
+        float i = 1f;
+        while(i > -1f)
+        {
+            i -= dissolveSpeed;
+            rend.material.SetFloat("_DissolveTime", i);
+            
+            yield return null;
         }
     }
 }

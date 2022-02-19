@@ -4,7 +4,7 @@ using UnityEngine;
 //Theo
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip AmbientWind, Checkpoint, Click, Dash, JumpPad, K‰gglaDamage, Landa, PowerUp, Rolling, R‰nna, Skada, Laser÷gon, RocketFiende, Coins, Hoppa,GameOver,WaterSplash,LavaSplash,Spin,Explosion; //Definerar audiclippen /Theo
+    public static AudioClip AmbientWind, Checkpoint, Click, Dash, JumpPad, K‰gglaDamage, Landa, PowerUp, Rolling, R‰nna, Skada, Laser÷gon, RocketFiende, Coins, Hoppa,GameOver,WaterSplash,LavaSplash,Spin,Explosion,Smash,BossSkada,BossDie; //Definerar audiclippen /Theo
     static AudioSource audioSrc;
 
     void Awake() //Parar ihop r‰tt variebel med motsvarande ljudfil
@@ -29,6 +29,9 @@ public class SoundManagerScript : MonoBehaviour
         LavaSplash = Resources.Load<AudioClip>("LavaSplash");
         Spin = Resources.Load<AudioClip>("Spin");
         Explosion = Resources.Load<AudioClip>("K‰gglaDamage");
+        Smash = Resources.Load<AudioClip>("Smash");
+        BossSkada = Resources.Load<AudioClip>("BossDamaged");
+        BossDie = Resources.Load<AudioClip>("BossDeath");
 
 
         audioSrc = GetComponent<AudioSource>();
@@ -96,6 +99,15 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "Explosion":
                 audioSrc.PlayOneShot(Explosion);
+                break;
+            case "Smash":
+                audioSrc.PlayOneShot(Smash);
+                break;
+            case "BossDeath":
+                audioSrc.PlayOneShot(BossDie);
+                break;
+            case "BossDamaged":
+                audioSrc.PlayOneShot(BossSkada);
                 break;
         }
     }

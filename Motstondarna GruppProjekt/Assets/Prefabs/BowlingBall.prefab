@@ -5044,6 +5044,7 @@ MonoBehaviour:
   lowestLevel: -4
   invinceColor: {r: 0, g: 0, b: 0, a: 0}
   rend: {fileID: 3086749108199493032}
+  dissolveSpeed: 0.01
 --- !u!95 &577211304583936683
 Animator:
   serializedVersion: 3
@@ -5469,7 +5470,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b3c0123b58579de469d044b135822f0b, type: 2}
+  - {fileID: 2100000, guid: 96ae0654e0ca6154d913644254159a32, type: 2}
   - {fileID: -3846018093981099296, guid: 11d72e0cdf0709a44b9a174a28a643da, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0

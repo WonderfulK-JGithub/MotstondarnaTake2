@@ -9,11 +9,17 @@ public class BossEnemy : MonoBehaviour
 
     [SerializeField] Vector3 bossKnockback;
     [SerializeField] GameObject shockWavePrefab;
+    [SerializeField] GameObject damageTrigger;
 
     [SerializeField] Vector3 leftShockWavePos; //btw det är vänster för bossens POV, inte spelarens
     [SerializeField] Vector3 rightShockWavePos;
 
+    [SerializeField] Vector3 leftDamageTriggerPos;
+    [SerializeField] Vector3 rightDamageTriggerPos;
+
     [SerializeField] Renderer rend;
+
+    public float speedIncrease;
 
     public Animator anim;
 
@@ -30,12 +36,26 @@ public class BossEnemy : MonoBehaviour
         anim.Play("Boss_Die");
         rend.material = deadMaterial;
     }
+    public void HitPlayer()
+    {
+        BallHealth.current.TakeDamage(Vector3.zero, 1);
+    }
+
 
     void CreateShockWave(int dir)
     {
-        bool _left = dir == -1;
-        if (_left) Instantiate(shockWavePrefab, leftShockWavePos,Quaternion.Euler(0f,90f,0f));
-        else Instantiate(shockWavePrefab, rightShockWavePos, Quaternion.Euler(0f, 90f, 0f));
+        SoundManagerScript.PlaySound("Smash");
+
+        if (dir == -1)
+        {
+            Instantiate(shockWavePrefab, leftShockWavePos, Quaternion.Euler(0f, 90f, 0f));
+            Destroy(Instantiate(damageTrigger, leftDamageTriggerPos, Quaternion.identity), 0.2f);
+        }
+        else
+        {
+            Instantiate(shockWavePrefab, rightShockWavePos, Quaternion.Euler(0f, 90f, 0f));
+            Destroy(Instantiate(damageTrigger, rightDamageTriggerPos, Quaternion.identity),0.2f);
+        }
 
     }
     private void OnTriggerEnter(Collider other)
