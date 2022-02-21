@@ -130,7 +130,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
                 }
 
                 //Dash
-                if(Input.GetButtonDown("Fire1") && canDash)
+                if(Input.GetButtonDown("Dash") && canDash)
                 {
                     state = PlayerState.ChargeDash;//ändrar state
                     chargeParticle.Play();//Sätter igång particles
@@ -151,7 +151,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
                 currentSpeed = Vector3.Lerp(currentSpeed, Vector3.zero, 0.05f);//ändrar bollens hastighet långsamt till 0
 
                 //kollar om man släpper dashKnappen
-                if(!Input.GetButton("Fire1"))
+                if(!Input.GetButton("Dash"))
                 {
                     SoundManagerScript.PlaySound("Dash");
 
