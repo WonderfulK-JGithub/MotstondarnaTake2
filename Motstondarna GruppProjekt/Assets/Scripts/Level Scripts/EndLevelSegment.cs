@@ -53,7 +53,7 @@ public class EndLevelSegment : MonoBehaviour
         }
         else
         {
-            GameSaveInfo.current.levelProgress = 5;
+            GameSaveInfo.current.levelProgress = 6;
         }
 
         SaveSystem.current.Save();

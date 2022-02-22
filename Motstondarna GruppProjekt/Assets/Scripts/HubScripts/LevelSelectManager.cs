@@ -23,6 +23,8 @@ public class LevelSelectManager : MonoBehaviour
     [SerializeField] float unlockTime;
     [SerializeField] ParticleSystem unlockPS;
 
+    [SerializeField] Button exitButton;
+
     [Header("Bonus Level")]
     [SerializeField] TextMeshProUGUI needText;
     [SerializeField] Image needCoinImage;
@@ -141,6 +143,8 @@ public class LevelSelectManager : MonoBehaviour
         state = LevelSelectState.Off;
 
         Invoke("EnterLevel", transitionWait);
+
+        exitButton.enabled = false;
     }
 
     void EnterLevel()
@@ -194,6 +198,12 @@ public class LevelSelectManager : MonoBehaviour
         unlockTimer = unlockTime;
 
         SoundManagerScript.PlaySound("Spin");
+    }
+
+    public void BackToTitleScreen()
+    {
+        state = LevelSelectState.Off;
+        SceneTransition.current.EnterScene(0);
     }
 }
 

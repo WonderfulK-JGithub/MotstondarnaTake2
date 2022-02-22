@@ -167,7 +167,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
                 else
                 {
                     dashTimer -= Time.deltaTime;
-                    if(dashTimer <= 0)
+                    if(dashTimer <= 0 || Input.GetButtonDown("Cancel"))//när tiden tar slut eller när man trycker på Cancel slutar man charge:a
                     {
                         state = PlayerState.Free;
                         chargeParticle.Stop();
@@ -180,7 +180,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
                 #region
                 dashTimer -= Time.deltaTime;
 
-                if(dashTimer <= 0f || Input.GetButtonDown("Cancel"))//när dashtimern är slut är man tillbaks till vanligt movement, eller att man själv väljer att cancela den
+                if(dashTimer <= 0f)//när dashtimern är slut är man tillbaks till vanligt movement
                 {
                     state = PlayerState.Free;
                     rb.useGravity = true;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BallHealth : BallMovement // av K-J
 {
@@ -24,6 +25,10 @@ public class BallHealth : BallMovement // av K-J
 
     public MeshRenderer rend;
     [SerializeField] float dissolveSpeed;
+
+    [SerializeField] TextMeshProUGUI infoText;
+    [SerializeField] float characterTime;
+    [SerializeField] float typeWriterTime;
     int healthPoints;
 
     float invinceTimer;
@@ -187,5 +192,24 @@ public class BallHealth : BallMovement // av K-J
             
             yield return null;
         }
+    }
+
+
+    public void ShowTextMessage(string message)
+    {
+        StartCoroutine(TypeWriter(message));
+    }
+    IEnumerator TypeWriter(string message)
+    {
+        WaitForSeconds daWaitTime = new WaitForSeconds(characterTime);
+        for (int i = 0; i < message.Length; i++)
+        {
+            infoText.text = message.Substring(0, i + 1);
+            yield return daWaitTime;
+        }
+
+        yield return new WaitForSeconds(typeWriterTime);
+
+        infoText.text = null;
     }
 }
