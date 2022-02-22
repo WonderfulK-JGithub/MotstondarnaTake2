@@ -56,7 +56,7 @@ public class CameraController : MonoBehaviour// av K-J
             currentRotation = Vector3.SmoothDamp(currentRotation, nextRotation, ref smoothVelocity, smoothTime);//i vårt fall har vi ingen "smooth" camera så vi behöver egentligen inte detta
             target.UpdateRotation(new Vector3(0f, rotationX, 0f));//ändrar rotationen på ett antal saker baserat på kamerans rotation
 
-            if(Input.GetMouseButtonDown(1))//omg firstperson mode
+            if(Input.GetKeyDown(KeyCode.P))//omg firstperson mode
             {
                 firstPerson = true;
                 transform.SetParent(target.transform);
@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour// av K-J
         }
         else
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 firstPerson = false;
                 transform.parent = null;
