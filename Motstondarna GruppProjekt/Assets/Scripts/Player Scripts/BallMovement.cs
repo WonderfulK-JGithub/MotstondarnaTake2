@@ -180,7 +180,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
                 #region
                 dashTimer -= Time.deltaTime;
 
-                if(dashTimer <= 0f)//när dashtimern är slut är man tillbaks till vanligt movement
+                if(dashTimer <= 0f || Input.GetButtonDown("Cancel"))//när dashtimern är slut är man tillbaks till vanligt movement, eller att man själv väljer att cancela den
                 {
                     state = PlayerState.Free;
                     rb.useGravity = true;
@@ -401,7 +401,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
         state = PlayerState.UnControllable;
 
         rb.velocity = bossKnockback;
-    }
+    }//skickar tillbaka spelaren till slottet när den skadat bossen
     
 }
 
