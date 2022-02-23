@@ -54,8 +54,8 @@ public class BaseEnemy : MonoBehaviour
             }
             else if (ball.currentSpeed.magnitude < playerVelocityForDeath)
             {
-                rb.isKinematic = true; //Så att spelaren inte kan putta på fienden - Max
                 rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+                rb.isKinematic = true; //Så att spelaren inte kan putta på fienden - Max              
 
                 //Använder formeln angle = point1 - point2 för att ta fram riktningen från spelaren till fienden - Max
                 Vector3 dir = collision != null ? collision.GetContact(0).point : other.transform.position - transform.position;
@@ -133,14 +133,14 @@ public class BaseEnemy : MonoBehaviour
         Destroy(newParticle, 1);
     }
 
+    //Den här coroutinen skulle egentligen långsamt göra fienden transparent, men transparent material ser fult ut och URP supportar inte jeller skuggor på trnasparent objekt, så det gör det ännu mer fult
+    //Därför så scalear den fienden tills den är pytteliten istället - Max
     IEnumerator Fade()
     {
         yield return new WaitForSeconds(2); //Först väntar 2 sekunder - Max
 
-        //rend.material = transparentMat;
-
-        Color color;
-        while (transform.localScale.x > 0.01f/*rend.material.color.a > 0*/) //Uppdaterar materialet varje frame och den får mindre och mindre alpha - Max
+        //Color color;
+        while (transform.localScale.x > 0.01f/*rend.material.color.a > 0*/) //Förminskar objektet varje frame - Max
         {
             //color = rend.material.color;
             //rend.material.color = new Color(color.r, color.g, color.b, color.a - (Time.deltaTime * fadeSpeed));
