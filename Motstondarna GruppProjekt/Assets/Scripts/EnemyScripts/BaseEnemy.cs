@@ -21,6 +21,8 @@ public class BaseEnemy : MonoBehaviour
     [HideInInspector] public Rigidbody rb; //Är public för att skript som ärver av detta också ska kunna accessa rigidbodyn - Max
     [SerializeField] GameObject deathParticle; //Man dör Particle som skapas när man dör - Max
 
+    [SerializeField] Material transparentMat;
+
     public virtual void Awake()
     {
         rend = GetComponentInChildren<MeshRenderer>();
@@ -53,6 +55,7 @@ public class BaseEnemy : MonoBehaviour
             else if (ball.currentSpeed.magnitude < playerVelocityForDeath)
             {
                 rb.isKinematic = true; //Så att spelaren inte kan putta på fienden - Max
+                rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
 
                 //Använder formeln angle = point1 - point2 för att ta fram riktningen från spelaren till fienden - Max
                 Vector3 dir = collision != null ? collision.GetContact(0).point : other.transform.position - transform.position;
@@ -81,7 +84,10 @@ public class BaseEnemy : MonoBehaviour
     {
         //Man ska kunna fortsätta röra sig efter man inte längre rör spelaren
         if (collision.transform.GetComponent<BallMovement>())
+        {
             rb.isKinematic = false;
+            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        }        
     }
 
     public virtual void Die(Vector3 contactPoint, Vector3 speed) //Dör och får en dieforce (flyger iväg från spelaren) - Max
@@ -131,11 +137,16 @@ public class BaseEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(2); //Först väntar 2 sekunder - Max
 
+        //rend.material = transparentMat;
+
         Color color;
-        while (rend.material.color.a > 0) //Uppdaterar materialet varje frame och den får mindre och mindre alpha - Max
+        while (transform.localScale.x > 0.01f/*rend.material.color.a > 0*/) //Uppdaterar materialet varje frame och den får mindre och mindre alpha - Max
         {
-            color = rend.material.color;
-            rend.material.color = new Color(color.r, color.g, color.b, color.a - (Time.deltaTime * fadeSpeed));
+            //color = rend.material.color;
+            //rend.material.color = new Color(color.r, color.g, color.b, color.a - (Time.deltaTime * fadeSpeed));
+
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 10);
+
             yield return null;
         }
 
