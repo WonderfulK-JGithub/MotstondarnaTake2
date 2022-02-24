@@ -14,6 +14,7 @@ public class MenuBG : MonoBehaviour
 
     void Start()
     {
+        ballpos = ball.transform.position;
         pinpos = new Vector3[pins.Length];
         for (int i = 0; i < pins.Length; i++)
         {
@@ -25,6 +26,7 @@ public class MenuBG : MonoBehaviour
 
     IEnumerator Play()
     {
+        allPinsDown = false;
         foreach (var item in pins)
         {
             if (item != null)
@@ -34,10 +36,65 @@ public class MenuBG : MonoBehaviour
         }
         run++;
         yield return new WaitForSeconds(Random.Range(0.4f, 2.4f));
-        ball.GetComponent<Rigidbody>().AddForce(new Vector3(1000, Random.Range(-5, 5), 0));
 
+        float offset = Random.Range(-2, 2);
+        float speed = Random.Range(15, 30);
+        float waitTime = Random.Range(28, 48);
 
-        yield return new WaitForSeconds(Random.Range(5, 10));
+        for (int i = 0; i < waitTime; i++)
+        {
+            ball.GetComponent<Rigidbody>().velocity = new Vector3(speed, 0, offset);
+            yield return new WaitForSeconds(0.25f);
+        }
+        yield return new WaitForSeconds(Random.Range(7, 12));
+
+        allPinsDown = true;  foreach (var item in pins)
+        {
+            if (item != null) { allPinsDown = false; }
+        }
+
+        if (!allPinsDown)
+        {
+            for (int i = 0; i < 40; i++)
+            {
+                ball.GetComponent<Rigidbody>().AddForce(new Vector3(100, 0, 0));
+                foreach (var item in pins)
+                {
+                    if (item != null)
+                    {
+                        item.GetComponent<Rigidbody>().isKinematic = true;
+                        item.transform.position += new Vector3(0, 0.1f, 0);
+                    }
+
+                }
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+
+        ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        ball.transform.position = ballpos;
+
+        if (run == 2)
+        {
+            foreach (var item in pins)
+            {
+                if (item != null)
+                {
+                    Destroy(item);
+                }
+
+            }
+            yield return new WaitForSeconds(Random.Range(2, 7));
+
+            for (int i = 0; i < pins.Length; i++)
+            {
+                pins[i] = Instantiate(pinprefab, pinpos[i], Quaternion.identity);
+                pins[i].GetComponent<Rigidbody>().isKinematic = true;
+                pins[i].transform.position += new Vector3(0, 4, 0);
+            }
+
+            run = 0;
+        }
 
         for (int i = 0; i < 40; i++)
         {
@@ -45,14 +102,12 @@ public class MenuBG : MonoBehaviour
             {
                 if (item != null)
                 {
-                    item.GetComponent<Rigidbody>().isKinematic = true;
-                    item.transform.position += new Vector3(0, 0.1f, 0);
+                    item.transform.position += new Vector3(0, -0.1f, 0);
                 }
-                
+
             }
             yield return new WaitForSeconds(0.05f);
         }
-
-        ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        StartCoroutine(Play());
     }
 }
