@@ -191,8 +191,12 @@ public class LevelSelectManager : MonoBehaviour//av K-J
             {
                 GameSaveInfo.current.levelProgress = 5;
                 levelNumbers[4].material = finishedColor;
+                SaveSystem.current.Save();
+                if (GameSaveInfo.current.coinCount == 50)//om man har 50 coins, då blir siffran unlocked
+                {
+                    levelNumbers[5].material = unlockedColor;
+                }
             }
-            
         }
 
         GameSaveInfo.currentLevel = -1;
