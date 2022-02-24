@@ -257,6 +257,7 @@ public class WanderingEnemy : BaseEnemy
         isMoving = false;
         rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints.None;
+        anim.speed = 0;
         
         //Sen dör
         base.Die(contactPoint, speed);

@@ -7,16 +7,16 @@ using UnityEngine.UI;
 public class LevelSelectManager : MonoBehaviour
 {
     [SerializeField] Transform[] levelCameraPoints;
-    [SerializeField] TextMeshProUGUI[] levelNumbers;
+    [SerializeField] Renderer[] levelNumbers;
     [SerializeField] TextMeshProUGUI coinCountText;
     [SerializeField] TextMeshProUGUI[] levelCoinCountTexts;
 
     [SerializeField] Transform ball;
     [SerializeField] Vector3 ballOffsett;
 
-    [SerializeField] Color finishedColor;
-    [SerializeField] Color unlockedColor;
-    [SerializeField] Color lockedColor;
+    [SerializeField] Material finishedColor;
+    [SerializeField] Material unlockedColor;
+    [SerializeField] Material lockedColor;
 
     [SerializeField] float rotateSpeed;
     [SerializeField] float transitionWait;
@@ -50,6 +50,8 @@ public class LevelSelectManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         state = LevelSelectState.Selecting;
 
         if (GameSaveInfo.currentLevel != -1) levelIndex = GameSaveInfo.currentLevel;
@@ -109,7 +111,7 @@ public class LevelSelectManager : MonoBehaviour
 
                 if(unlockTimer <= 0f)
                 {
-                    levelNumbers[unlockedLevel].color = unlockedColor;
+                    levelNumbers[unlockedLevel].material = unlockedColor;
                     unlockPS.transform.position = levelNumbers[unlockedLevel].transform.position + new Vector3(-1f,1.5f,0f);
                     unlockPS.Play();
                     state = LevelSelectState.Selecting;
@@ -159,37 +161,46 @@ public class LevelSelectManager : MonoBehaviour
         {
             if (i < GameSaveInfo.current.levelProgress)
             {
-                levelNumbers[i].color = finishedColor;
+                levelNumbers[i].material = finishedColor;
             }
             else if (i == GameSaveInfo.current.levelProgress)
             {
-                levelNumbers[i].color = unlockedColor;
+                levelNumbers[i].material = unlockedColor;
             }
             else
             {
-                levelNumbers[i].color = lockedColor;
+                levelNumbers[i].material = lockedColor;
             }
 
             if(i == 5 && GameSaveInfo.current.coinCount < 50)
             {
-                levelNumbers[i].color = lockedColor;
+                levelNumbers[i].material = lockedColor;
             }
         }
 
         
 
-        if (GameSaveInfo.currentLevel != -1 && GameSaveInfo.current.levelProgress == GameSaveInfo.currentLevel && GameSaveInfo.currentLevel < 5)
+        if (GameSaveInfo.currentLevel != -1 && GameSaveInfo.current.levelProgress == GameSaveInfo.currentLevel)
         {
-            GameSaveInfo.current.levelProgress++;
+            if (GameSaveInfo.currentLevel < 4)
+            {
+                GameSaveInfo.current.levelProgress++;
 
-            UnlockLevel(GameSaveInfo.current.levelProgress);
+                UnlockLevel(GameSaveInfo.current.levelProgress);
+            }
+            else if(GameSaveInfo.currentLevel == 4)
+            {
+                GameSaveInfo.current.levelProgress = 5;
+                levelNumbers[4].material = finishedColor;
+            }
+            
         }
 
         GameSaveInfo.currentLevel = -1;
     }
     void UnlockLevel(int level)
     {
-        levelNumbers[level-1].color = finishedColor;
+        levelNumbers[level-1].material = finishedColor;
 
         state = LevelSelectState.Unlocking;
         unlockedLevel = level;
