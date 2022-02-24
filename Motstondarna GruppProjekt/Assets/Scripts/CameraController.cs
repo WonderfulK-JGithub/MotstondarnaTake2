@@ -56,16 +56,12 @@ public class CameraController : MonoBehaviour// av K-J
             currentRotation = Vector3.SmoothDamp(currentRotation, nextRotation, ref smoothVelocity, smoothTime);//i vårt fall har vi ingen "smooth" camera så vi behöver egentligen inte detta
             target.UpdateRotation(new Vector3(0f, rotationX, 0f));//ändrar rotationen på ett antal saker baserat på kamerans rotation
 
-            if(Input.GetKeyDown(KeyCode.P))//omg firstperson mode
+            if(Input.GetKeyDown(KeyCode.P))//omg firstperson mode! Men, du måste pusha P
             {
                 firstPerson = true;
                 transform.SetParent(target.transform);
                 transform.localPosition = Vector3.zero;
             }
-
-            
-
-
         }
         else
         {
@@ -75,8 +71,6 @@ public class CameraController : MonoBehaviour// av K-J
                 transform.parent = null;
             }
         }
-        
-        
     }
 
     void FixedUpdate()
@@ -97,7 +91,7 @@ public class CameraController : MonoBehaviour// av K-J
 
             transform.position = target.transform.position - transform.forward * distanceFromTarget;//ändrar kamerans position
 
-            if(shakeTimer > 0f)
+            if(shakeTimer > 0f)//screneshake (samma metod som i Juicyness)
             {
                 shakeTimer -= Time.fixedDeltaTime;
 
@@ -105,13 +99,14 @@ public class CameraController : MonoBehaviour// av K-J
                 shakePos.x = Random.Range(-shakePower, shakePower);
                 shakePos.y = Random.Range(-shakePower, shakePower);
 
-                Vector3 truePos = shakePos.x * transform.right + shakePos.y * transform.up;
+                Vector3 truePos = shakePos.x * transform.right + shakePos.y * transform.up;//screenshaken tar hänsyn till kameravinkeln
 
                 transform.position += truePos;
 
                 shakePower -= powerReduction * Time.fixedDeltaTime;
             }
         }
+        //kolla inte ens här! Dina ögon kan inte motstå kraften av first person mode
         else
         {
             transform.localEulerAngles = new Vector3(target.transform.localEulerAngles.x, target.transform.localEulerAngles.y, target.transform.localEulerAngles.z);//ändrar rotationen på transformen

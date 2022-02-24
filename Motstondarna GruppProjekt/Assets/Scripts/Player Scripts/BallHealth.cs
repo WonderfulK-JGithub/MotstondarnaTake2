@@ -16,7 +16,6 @@ public class BallHealth : BallMovement // av K-J
     [SerializeField] Image healthImage;
     [SerializeField] Sprite[] healthSprites;
     [SerializeField] Animator healthImageAnim;
-    [SerializeField] ParticleSystem waterSplashPS;
 
     public float lowestLevel = -4;
 
@@ -26,9 +25,12 @@ public class BallHealth : BallMovement // av K-J
     public MeshRenderer rend;
     [SerializeField] float dissolveSpeed;
 
+    [Header("Text")]
     [SerializeField] TextMeshProUGUI infoText;
     [SerializeField] float characterTime;
     [SerializeField] float typeWriterTime;
+    
+    
     int healthPoints;
 
     float invinceTimer;
@@ -49,8 +51,6 @@ public class BallHealth : BallMovement // av K-J
         defaultColor = rend.material.GetColor("_Color");
 
         NewHealth();
-
-        
     }
 
     public override void Update()
@@ -73,11 +73,6 @@ public class BallHealth : BallMovement // av K-J
         else
         {
             rend.material.color = defaultColor;
-        }
-
-        if(Input.GetKeyDown(KeyCode.U))
-        {
-            TakeDamage(Vector3.zero, 1);
         }
 
         if (transform.position.y < lowestLevel) // om man är under lowestLevel - Anton
@@ -120,7 +115,7 @@ public class BallHealth : BallMovement // av K-J
         }
     }
 
-    void NewHealth()
+    void NewHealth()//uppdaterar health UI
     {
         healthPoints = Mathf.Clamp(healthPoints, 0, maxHealth);
 
@@ -130,7 +125,7 @@ public class BallHealth : BallMovement // av K-J
 
     public void GameOver()
     {
-        if (Pause.gamePaused) return;
+        if (Pause.gamePaused) return;//om spelet har pausats kan man inte dö
 
         enabled = false;
 
@@ -138,11 +133,11 @@ public class BallHealth : BallMovement // av K-J
         Cursor.visible = true;
         
         SoundManagerScript.PlaySound("Game Over");
-        CameraController.current.enabled = false;
+        CameraController.current.enabled = false;//kameran slutar följa spelaren
 
-        Invoke("Transition", deathTime);
+        Invoke("Transition", deathTime);//börjar scenetransitiona efter viss tid
         Pause.gamePaused = true;
-        Pause.source.Stop();
+        Pause.source.Stop();//stoppar musiken
         FindObjectOfType<Pause>().enabled = false;
     }
 
@@ -164,8 +159,6 @@ public class BallHealth : BallMovement // av K-J
             Destroy(other.gameObject);
 
             SoundManagerScript.PlaySound("PowerUp");
-
-            
         }
         else if(other.gameObject.CompareTag("ShockWave"))
         {
@@ -173,11 +166,6 @@ public class BallHealth : BallMovement // av K-J
         }
         else if(other.gameObject.CompareTag("Water"))
         {
-            //SoundManagerScript.PlaySound("WaterSplash");
-
-            //waterSplashPS.Play();
-            //waterSplashPS.transform.position = transform.position;
-
             GameOver();
         }
     }
@@ -188,7 +176,7 @@ public class BallHealth : BallMovement // av K-J
         while(i > -1f)
         {
             i -= dissolveSpeed * Time.deltaTime;
-            rend.material.SetFloat("_DissolveTime", i);
+            rend.material.SetFloat("_DissolveTime", i);//ändrar variabel i shadergraph koden
             
             yield return null;
         }
@@ -199,7 +187,7 @@ public class BallHealth : BallMovement // av K-J
     {
         StartCoroutine(TypeWriter(message));
     }
-    IEnumerator TypeWriter(string message)
+    IEnumerator TypeWriter(string message)//skriver text en character i taget
     {
         WaitForSeconds daWaitTime = new WaitForSeconds(characterTime);
         for (int i = 0; i < message.Length; i++)

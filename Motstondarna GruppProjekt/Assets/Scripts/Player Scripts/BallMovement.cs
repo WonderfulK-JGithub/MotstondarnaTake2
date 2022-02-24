@@ -67,16 +67,12 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
     {
         rb = GetComponent<Rigidbody>();
 
-
-        if(inHub)
+        if(inHub)//vill använda samma klot i hubben men den ska inte gå att röra på och ska inte visa sin UI
         {
             state = PlayerState.Off;
             ballUI.SetActive(false);
 
         }
-
-        
-        
     }
 
 
@@ -281,7 +277,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
                 break;
             case PlayerState.UnControllable:
                 #region
-                if (Physics.Raycast(transform.position, Vector3.down, 0.52f, groundLayers))
+                if (Physics.Raycast(transform.position, Vector3.down, 0.52f, groundLayers))//träffar man marken kan man börja röra sig igen
                 {
                     state = PlayerState.Free;
                 }
@@ -345,7 +341,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
         }
     }
 
-    public void UpdateRotation(Vector3 rotation)
+    public void UpdateRotation(Vector3 rotation)//updaterar rotation på orientation, charge partiklarna och trailen
     {
         orientationTransform.eulerAngles = rotation;
         chargeParticle.transform.eulerAngles = rotation;
@@ -355,25 +351,17 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
 
     public void OnTriggerEnter(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Ränna") && state == PlayerState.Free)
         {
-            state = PlayerState.Renn;
+            state = PlayerState.Renn;//när man är i ränna staten kan man inte röra sig
             currentSpeed = Vector3.zero;
         }
         else if(other.gameObject.CompareTag("Coin"))
         {
-
             other.gameObject.GetComponent<CollectableCoin>().CollectCoin();
 
             SoundManagerScript.PlaySound("Coins");
-        }
-        else if(other.gameObject.CompareTag("Finish"))
-        {
-            transform.position = other.transform.position;
-            rb.velocity = Vector3.right * 2f;
-            state = PlayerState.End;
-            rb.useGravity = true;
-            chargeParticle.Stop();
         }
     }
 

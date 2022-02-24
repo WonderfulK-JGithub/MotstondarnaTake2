@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossEnemy : MonoBehaviour
+public class BossEnemy : MonoBehaviour//av K-J
 {
     public static BossEnemy current;
-
 
     [SerializeField] Vector3 bossKnockback;
     [SerializeField] GameObject shockWavePrefab;
@@ -31,22 +30,22 @@ public class BossEnemy : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void Die()
+    public void Die()//Spelar death animation och ändrar textur(material)
     {
         anim.Play("Boss_Die");
         rend.material = deadMaterial;
     }
-    public void HitPlayer()
+    public void HitPlayer()//kallas av ett CollisionTriggerEvent objekt
     {
         BallHealth.current.TakeDamage(Vector3.zero, 1);
     }
 
 
-    void CreateShockWave(int dir)
+    void CreateShockWave(int dir)//kallas av ett animation event i bossens attack animation
     {
         SoundManagerScript.PlaySound("Smash");
 
-        if (dir == -1)
+        if (dir == -1)//skapa en shockWave på vänstra eller högra sidan
         {
             Instantiate(shockWavePrefab, leftShockWavePos, Quaternion.Euler(0f, 90f, 0f));
             Destroy(Instantiate(damageTrigger, leftDamageTriggerPos, Quaternion.identity), 0.2f);
@@ -62,13 +61,10 @@ public class BossEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            
-
-            BallHealth ballHD = other.gameObject.GetComponent<BallHealth>();
-            if (ballHD.aboveKillSpeed)
+            if (BallHealth.current.aboveKillSpeed)
             {
-                BallHealth.current.BossDamaged(bossKnockback);
-                BossManager.current.BossDamaged();
+                BallHealth.current.BossDamaged(bossKnockback);//spelaren knockas tillbaka till slottet
+                BossManager.current.BossDamaged(); //bossen tar skada
             }
             else
             {
