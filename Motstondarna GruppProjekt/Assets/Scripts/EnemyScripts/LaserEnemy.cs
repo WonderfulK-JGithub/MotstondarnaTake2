@@ -197,7 +197,6 @@ public class LaserEnemy : MonoBehaviour
         alerted = false;
 
         //Ljudeffekt
-        //SoundManagerScript.PlaySound("Laser÷gon");
         if(currentSound != null)Destroy(currentSound.gameObject);
         currentSound = AdvancedAudioManager.current.PlayLoopedSound(AdvancedAudioManager.current.audioClips[(int)AUDIO.LASER]);
 

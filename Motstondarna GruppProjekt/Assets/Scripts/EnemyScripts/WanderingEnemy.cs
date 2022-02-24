@@ -149,8 +149,8 @@ public class WanderingEnemy : BaseEnemy
         if (!neverStopChasing)
         {
             isChasingPlayer = false;
-        }
-        Invoke(nameof(CanCheckForPlayer), tilCanCheckForPlayer); //Efter 1 sekund så kan fienden börja kolla efter spelaren igen - Max
+            Invoke(nameof(CanCheckForPlayer), tilCanCheckForPlayer); //Efter 1 sekund så kan fienden börja kolla efter spelaren igen - Max
+        }  
     }
 
     public void StartChasing()
