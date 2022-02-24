@@ -6,7 +6,7 @@ using System.Collections.Generic;
 // pga build errors så kommentifieras koden innan builds, så det är med stor sannolikhet att du ser koden som en stor kommentar. - Anton
 public class SortChildren : MonoBehaviour
 {
-	[ContextMenu("Sort")]
+	/*[ContextMenu("Sort")]
 	public void SortChildrenByName()
 	{
 		foreach (GameObject obj in Selection.gameObjects)
@@ -26,5 +26,5 @@ public class SortChildren : MonoBehaviour
 		}
 		Debug.Log("Sorted!");
 
-	}
+	}*/
 }

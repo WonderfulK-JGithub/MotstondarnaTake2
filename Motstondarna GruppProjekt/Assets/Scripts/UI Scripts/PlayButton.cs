@@ -8,6 +8,6 @@ public class PlayButton : MonoBehaviour
     public void Play() // Button till starta spelet
     {
         //SceneManager.LoadScene("GameScene");
-        SceneTransition.current.EnterScene(2);
+        SceneTransition.current.EnterScene(3);
     }
 }
