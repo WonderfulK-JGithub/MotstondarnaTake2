@@ -31,6 +31,8 @@ public class RocketEnemy : MonoBehaviour
 
     Animator anim;
 
+    //privates
+    Quaternion? lastRot = null; //Rotationen av rocketen förra framenen - Max
 
     private void Awake()
     {
@@ -107,6 +109,9 @@ public class RocketEnemy : MonoBehaviour
 
     void RotateTowardsPlayer(float rotSpeed)
     {
+        if(lastRot != null)
+            transform.rotation = (Quaternion)lastRot; //Gör så att rotationen inte kan ändras mellan frames av okänd anledning som gjorde att den snurrade konstigt - Max
+
         //Roterar
         Vector3 lookAt = transform.InverseTransformPoint(player.position);
         lookAt.y = 0;
@@ -116,6 +121,7 @@ public class RocketEnemy : MonoBehaviour
         transform.LookAt(lookAt, transform.up);
         Quaternion lookRotation = transform.rotation;
         transform.rotation = Quaternion.RotateTowards(rotation, lookRotation, rotSpeed * Time.deltaTime);
+        lastRot = Quaternion.RotateTowards(rotation, lookRotation, rotSpeed * Time.deltaTime); ;
     }
 
     //Exploderar automatiskt efter ett tag - Max
