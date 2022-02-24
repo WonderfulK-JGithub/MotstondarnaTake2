@@ -27,6 +27,8 @@ public class RocketEnemy : MonoBehaviour
     WanderingEnemy wanderingScript;
     Rigidbody rb;
 
+    [SerializeField] PhysicMaterial physMat;
+
     Animator anim;
 
 
@@ -61,7 +63,7 @@ public class RocketEnemy : MonoBehaviour
         }
 
         //Om tillräckligt nära spelaren så ska den explodera - Max
-        if (rocketOn && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(player.position.x, 0, player.position.z)) < rocketExplodeRadius)
+        if (rocketOn && Vector3.Distance(transform.position, player.position) < rocketExplodeRadius)
         {
             Explode();
         }
@@ -71,6 +73,9 @@ public class RocketEnemy : MonoBehaviour
     {
         //Ser till så att det inte blir konstigt med wanderingscript - Max
         wanderingScript.overrideChasing = true;
+
+        GetComponent<MeshCollider>().material = physMat;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         anim.Play("RocketStart");
         alerted = true; //istället för att starta raketen direkt så alertar vi den - Max
@@ -94,8 +99,6 @@ public class RocketEnemy : MonoBehaviour
         Vector3 newVel = transform.forward * rocketSpeed;
         rb.velocity = new Vector3(newVel.x, rb.velocity.y, newVel.z);
     }
-
-    
 
     void RotateTowardsPlayer()
     {
@@ -127,7 +130,7 @@ public class RocketEnemy : MonoBehaviour
         SoundManagerScript.PlaySound("Explosion"); //Spelar explosion-ljud - Max
 
         //Kollar om tillräckligt nära spelaren för att skada den - Max
-        if (Vector3.Distance(transform.position, player.position) < rocketExplodeRadius)
+        if (Vector3.Distance(transform.position, player.position) < rocketExplodeRadius * 1.2f)
         {
             //får fram vector riktning och längd
             Vector3 dir = player.position - transform.position;
@@ -148,7 +151,7 @@ public class RocketEnemy : MonoBehaviour
         Destroy(newExplosion.GetChild(0).gameObject, 0.2f);
         Destroy(newExplosion.gameObject, 1);
 
-        //Ingen fade så använnder die now - Max
+        //Ska dö direkt efter explosion - Max
         wanderingScript.DieNow();
     }
 }

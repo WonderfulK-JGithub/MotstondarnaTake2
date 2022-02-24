@@ -22,6 +22,7 @@ public class WanderingEnemy : BaseEnemy
     [Header("Chasing parameters")]
     [SerializeField] float chasingSpeed; //Hur snabbt den jagar spelaren - max
     [SerializeField] float rotationSpeed; //Hur snabbt den roterar när den rör sig - max
+    [SerializeField] bool neverStopChasing = false;
 
     [Header("Other")]
     [SerializeField] bool dontStandStill = false; //Vissa enemies har ingen stå still animation - Max
@@ -145,7 +146,10 @@ public class WanderingEnemy : BaseEnemy
 
     void StopChasing()
     {
-        isChasingPlayer = false;
+        if (!neverStopChasing)
+        {
+            isChasingPlayer = false;
+        }
         Invoke(nameof(CanCheckForPlayer), tilCanCheckForPlayer); //Efter 1 sekund så kan fienden börja kolla efter spelaren igen - Max
     }
 

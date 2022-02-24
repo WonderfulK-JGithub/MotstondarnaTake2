@@ -187,7 +187,7 @@ public class BallHealth : BallMovement // av K-J
         float i = 1f;
         while(i > -1f)
         {
-            i -= dissolveSpeed;
+            i -= dissolveSpeed * Time.deltaTime;
             rend.material.SetFloat("_DissolveTime", i);
             
             yield return null;

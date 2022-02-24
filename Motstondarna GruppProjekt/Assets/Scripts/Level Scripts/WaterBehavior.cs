@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//K-Js script
 public class WaterBehavior : MonoBehaviour
 {
     [SerializeField] GameObject waterSplashPS;

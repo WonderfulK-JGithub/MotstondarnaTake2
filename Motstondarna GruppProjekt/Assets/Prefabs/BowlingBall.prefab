@@ -5044,7 +5044,7 @@ MonoBehaviour:
   lowestLevel: -4
   invinceColor: {r: 0, g: 0, b: 0, a: 0}
   rend: {fileID: 3086749108199493032}
-  dissolveSpeed: 0.01
+  dissolveSpeed: 0.6
   infoText: {fileID: 5187516465144394653}
   characterTime: 0.05
   typeWriterTime: 4

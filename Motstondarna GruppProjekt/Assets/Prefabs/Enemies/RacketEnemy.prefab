@@ -4855,13 +4855,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rocketRotatingSpeed: 40
   rocketSpeed: 14
-  rocketRotSpeedWhileActivating: 140
+  rocketRotSpeedWhileActivating: 200
   rocketActivateRadius: 8
   rocketExplosionTime: 4
   rocketExplodeRadius: 2
   knockBackForce: 10
   rocketParticles: {fileID: 3577710622979236926}
   explosion: {fileID: 6534478877451751019, guid: b7c68052142f53943a21384be094f614, type: 3}
+  physMat: {fileID: 13400000, guid: e22b082db6db90b4685f8e3277ea21fb, type: 2}
 --- !u!114 &3577710623062323966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4882,6 +4883,7 @@ MonoBehaviour:
   hasDied: 0
   rb: {fileID: 0}
   deathParticle: {fileID: 264365672311112969, guid: 6cd0c1346f7190e4c86814a8da3f9103, type: 3}
+  transparentMat: {fileID: 0}
   wanderingAreaCenter: {x: 0, y: 0, z: 0}
   wanderingAreaSize: 7
   wanderingSpeed: 2
@@ -4892,6 +4894,7 @@ MonoBehaviour:
   tilCanCheckForPlayer: 1
   chasingSpeed: 5
   rotationSpeed: 2
+  neverStopChasing: 1
   dontStandStill: 0
   yPosToDie: -10
   isChasingPlayer: 0

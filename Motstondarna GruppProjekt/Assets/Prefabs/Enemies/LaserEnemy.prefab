@@ -175,6 +175,7 @@ MonoBehaviour:
   hasDied: 0
   rb: {fileID: 0}
   deathParticle: {fileID: 264365672311112969, guid: 6cd0c1346f7190e4c86814a8da3f9103, type: 3}
+  transparentMat: {fileID: 0}
   wanderingAreaCenter: {x: 0, y: 0, z: 0}
   wanderingAreaSize: 7
   wanderingSpeed: 2
