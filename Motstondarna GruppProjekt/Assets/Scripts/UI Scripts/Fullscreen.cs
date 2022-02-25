@@ -6,6 +6,6 @@ public class Fullscreen : MonoBehaviour
 {
     public void SettFullscreen(bool isFullscreen)
     {
-        Screen.fullScreen = isFullscreen;
+        Screen.fullScreen = isFullscreen; 
     }
 }
