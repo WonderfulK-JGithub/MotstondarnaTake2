@@ -47,6 +47,7 @@ public class MenuBG : MonoBehaviour
 
         allPinsDown = true;  foreach (var item in pins) // kollar om alla käglor är nere - Anton
         {
+            if (item != null && (Mathf.Round(item.transform.rotation.x) != 0 || Mathf.Round(item.transform.rotation.z) != 0)) { Destroy(item); } // om en kägla har vält så plockas den bort - Anton
             if (item != null) { allPinsDown = false; } // om någon står upp så sätts värdet till false igen - Anton
         }
 
