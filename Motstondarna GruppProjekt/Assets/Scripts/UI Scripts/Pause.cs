@@ -60,6 +60,7 @@ public class Pause : MonoBehaviour
     public void Menu()
     {
         Time.timeScale = 1;
+        PlayerPrefs.SetInt("progress", 0);
         SceneTransition.current.EnterScene(3);
 
         foreach (var item in FindObjectsOfType<CollectableCoin>())
