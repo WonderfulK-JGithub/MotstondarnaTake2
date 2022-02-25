@@ -38,7 +38,7 @@ public class Pause : MonoBehaviour
 
         for (int i = 0; i < windows.Length; i++) // stänger alla fönster - Anton
         {
-            windows[i].SetActive(false);
+            windows[i].SetActive(false); // gömmer pausfönstret - Anton
         }
 
         source.Play();
@@ -46,22 +46,21 @@ public class Pause : MonoBehaviour
     public void Restart()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneTransition.current.ReLoadScene();
-        Time.timeScale = 1;
+        SceneTransition.current.ReLoadScene(); // kallar på k-js fina scenetransition och ber den att starta om - Anton
+        Time.timeScale = 1; // avpausar spelet - Anton
     }
     public void FullRestart()
     {
-        PlayerPrefs.SetInt("progress", 0);
+        PlayerPrefs.SetInt("progress", 0); // återställer framsteg - Anton
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneTransition.current.ReLoadScene();
-        Time.timeScale = 1;
+        Restart(); // startar om - Anton
     }
 
     public void Menu()
     {
-        Time.timeScale = 1;
-        PlayerPrefs.SetInt("progress", 0);
-        SceneTransition.current.EnterScene(3);
+        Time.timeScale = 1; // avpausar spelet - Anton
+        PlayerPrefs.SetInt("progress", 0); // återställer framsteg - Anton
+        SceneTransition.current.EnterScene(3); // kallar på k-js fina scenetransition och ber den att öppna menyscenen - Anton
 
         foreach (var item in FindObjectsOfType<CollectableCoin>())
         {
@@ -72,15 +71,15 @@ public class Pause : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) // när ESC trycks - Anton
         {
             if (windows[0].activeInHierarchy == true)
             {
-                Resume();
+                Resume(); // avpausar den om spelet är pausat - Anton
             }
             else
             {
-                OpenWindow(0);
+                OpenWindow(0); // annars pausar den - Anton
             }
         }
     }
