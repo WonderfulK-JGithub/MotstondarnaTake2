@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class SettingsMenyScript : MonoBehaviour
 {
+    private void Start()
+    {
+        AudioListener.volume = PlayerPrefs.GetFloat("musicVolume", 1);
+    }
+
     public void Settings() //Settings meny knappen
     {
         SceneManager.LoadScene("SettingsMeny");

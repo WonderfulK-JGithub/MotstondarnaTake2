@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5275604804579488732}
   - component: {fileID: 4791097946932095332}
   - component: {fileID: 4791097946932095333}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Lava
   m_TagString: Water
   m_Icon: {fileID: 0}

@@ -26,6 +26,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
     [SerializeField] float jumpHoldTime;//hur länge man kan holla in knappen för ett högre hopp
     [SerializeField] float extraGravityFactor;//hur mycket gånger mer man ska ha gravitation när man inte håller in hoppknappen
     [SerializeField] float terminalVelocity;//Den snabbaste hastighet klotet kan falla
+    [SerializeField] float maxAngleforJump; //raycast räknar inte en träff med högre angle en detta som onGround
     [SerializeField] LayerMask groundLayers;//vilka layers som räknas som ground
     [SerializeField] LayerMask slipparyLayer;//vilka layers som räknas som slippary
 
@@ -144,7 +145,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
             case PlayerState.ChargeDash:
                 #region
 
-                currentSpeed = Vector3.Lerp(currentSpeed, Vector3.zero, 0.05f);//ändrar bollens hastighet långsamt till 0
+                currentSpeed = Vector3.Lerp(currentSpeed, Vector3.zero, 4f * Time.deltaTime);//ändrar bollens hastighet stegvis till 0
 
                 //kollar om man släpper dashKnappen
                 if(!Input.GetButton("Dash"))
@@ -194,23 +195,38 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
         {
             case PlayerState.Free:
                 #region
-                if (Physics.Raycast(transform.position, Vector3.down, 0.60f, groundLayers))
+
+                onGround = false;
+                onSlippary = false;
+                Vector3[] _offsets = {Vector3.back * 0.5f,Vector3.forward * 0.5f, Vector3.left * 0.5f, Vector3.right * 0.5f};
+
+                //kollar om man är på ground
+                foreach (var item in _offsets)
                 {
-                    onGround = true;
-                    canDash = true;
-                }//kollar om man är på ground
-                else
-                {
-                    onGround = false;
+                    if (Physics.Raycast(transform.position + item, Vector3.down, out RaycastHit hit, 0.60f, groundLayers))
+                    {
+                        float _groundAngle = Vector3.Angle(hit.normal, Vector3.up);
+
+                        if(_groundAngle <= maxAngleforJump)
+                        {
+                            onGround = true;
+                            canDash = true;
+                            break;
+                        }
+                    }
                 }
-                if (Physics.Raycast(transform.position, Vector3.down, 0.52f, slipparyLayer))
+                //kollar om man är på slippary
+                foreach (var item in _offsets)
                 {
-                    onSlippary = true;
-                }//kollar om man är på slippary
-                else
-                {
-                    onSlippary = false;
+                    if (Physics.Raycast(transform.position + item, Vector3.down, 0.52f, slipparyLayer))
+                    {
+                        onSlippary = true;
+                        break;
+                    }
                 }
+
+
+        
 
 
                 //är vinkeln mellan vectorerna av den nuvarnade hastigheten och target hastigheten mer än 90 grader räknar jag det som tvärsvägning
@@ -280,6 +296,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
                 if (Physics.Raycast(transform.position, Vector3.down, 0.52f, groundLayers))//träffar man marken kan man börja röra sig igen
                 {
                     state = PlayerState.Free;
+                    BossManager.current.PlayerBackToCastle();
                 }
 
                 currentSpeed = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -302,7 +319,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
         }
         else
         {
-            speedBar.value = Mathf.Lerp(speedBar.value, _value, 0.3f);//ändrar valuen på slidern så att baren fylls upp
+            speedBar.value = Mathf.Lerp(speedBar.value, _value, 18f * Time.deltaTime);//ändrar valuen på slidern så att baren fylls upp
 
             fillImage.color = speedColors.Evaluate(_value);//ändar färgen på baren baserat på om man har tillräckligt med fart(för att döda käglor) med hjälp av en gradient
         }

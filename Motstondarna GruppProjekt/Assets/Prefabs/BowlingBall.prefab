@@ -5012,9 +5012,10 @@ MonoBehaviour:
   jumpHoldTime: 0.4
   extraGravityFactor: 4
   terminalVelocity: -14
+  maxAngleforJump: 40
   groundLayers:
     serializedVersion: 2
-    m_Bits: 2240
+    m_Bits: 2241
   slipparyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -5023,7 +5024,7 @@ MonoBehaviour:
   dashTrail: {fileID: 2667104024554036990}
   dashBarColor: {r: 0.32685232, g: 0, b: 1, a: 1}
   chargeParticle: {fileID: 577211304363952022}
-  slideExtraGravity: 3
+  slideExtraGravity: 3.4
   inHub: 0
   ballUI: {fileID: 5836125304873056038}
   aboveKillSpeed: 0

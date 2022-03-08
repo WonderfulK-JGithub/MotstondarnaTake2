@@ -21,6 +21,8 @@ public class BossManager : MonoBehaviour
 
     [SerializeField] GameObject theEnd;
 
+    [SerializeField] GameObject castleHiddenColliders;
+
     BossState state;
 
     int currentWave;
@@ -105,7 +107,7 @@ public class BossManager : MonoBehaviour
 
     public void BossDamaged()
     {
-        
+        castleHiddenColliders.SetActive(false);
 
         currentWave++;
 
@@ -131,7 +133,10 @@ public class BossManager : MonoBehaviour
         rightDoor.Play("Door_Close");
     }
 
-    
+    public void PlayerBackToCastle()
+    {
+        castleHiddenColliders.SetActive(true);
+    }
 
     enum BossState
     {
