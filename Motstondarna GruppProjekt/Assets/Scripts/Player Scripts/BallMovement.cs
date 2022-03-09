@@ -29,6 +29,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
     [SerializeField] float maxAngleforJump; //raycast räknar inte en träff med högre angle en detta som onGround
     [SerializeField] LayerMask groundLayers;//vilka layers som räknas som ground
     [SerializeField] LayerMask slipparyLayer;//vilka layers som räknas som slippary
+    [SerializeField] LayerMask maxECringe; //max noob yes
 
     float holdTimer;
 
@@ -60,6 +61,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
     public Vector3 currentSpeed;
 
     [HideInInspector] public Rigidbody rb;
+    [HideInInspector] public SphereCollider col;
     public PlayerState state;
 
     
@@ -67,6 +69,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
     public virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        col = GetComponent<SphereCollider>();
 
         if(inHub)//vill använda samma klot i hubben men den ska inte gå att röra på och ska inte visa sin UI
         {
@@ -215,6 +218,14 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
                         }
                     }
                 }
+
+                if(!onGround)
+                {
+                    if(Physics.OverlapSphere(transform.position, col.radius + 0.02f, maxECringe).Length != 0)
+                    {
+                        onGround = true;
+                    }
+                }
                 //kollar om man är på slippary
                 foreach (var item in _offsets)
                 {
@@ -339,7 +350,7 @@ public class BallMovement : MonoBehaviour //av K-J (utom där det står max)
             if (aboveKillSpeed)
             {
                 aboveKillSpeed = false;
-                ChangeBowlingPinLayers(0);
+                ChangeBowlingPinLayers(12);
             }
         }
 

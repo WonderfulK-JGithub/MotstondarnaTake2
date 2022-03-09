@@ -5015,10 +5015,13 @@ MonoBehaviour:
   maxAngleforJump: 40
   groundLayers:
     serializedVersion: 2
-    m_Bits: 2241
+    m_Bits: 2240
   slipparyLayer:
     serializedVersion: 2
     m_Bits: 128
+  maxECringe:
+    serializedVersion: 2
+    m_Bits: 4096
   dashTime: 0.4
   dashHoldTime: 3
   dashTrail: {fileID: 2667104024554036990}
@@ -5030,6 +5033,7 @@ MonoBehaviour:
   aboveKillSpeed: 0
   currentSpeed: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
+  col: {fileID: 0}
   state: 0
   maxHealth: 3
   invinceTime: 1

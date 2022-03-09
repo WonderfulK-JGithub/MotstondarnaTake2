@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2729302447243454646}
   - component: {fileID: 2729302447243454664}
   - component: {fileID: 2729302447243454667}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: "BasicK\xE4gla"
   m_TagString: SimpleBowlingPin
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ MonoBehaviour:
   hasDied: 0
   rb: {fileID: 0}
   deathParticle: {fileID: 0}
-  waterSplashPS: {fileID: 1891877849658848471, guid: c29469f0ab8a53448af5ca30a50efae1, type: 3}
+  transparentMat: {fileID: 0}
 --- !u!33 &2729302447243454646
 MeshFilter:
   m_ObjectHideFlags: 0
