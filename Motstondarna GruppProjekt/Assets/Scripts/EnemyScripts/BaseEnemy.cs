@@ -72,6 +72,8 @@ public class BaseEnemy : MonoBehaviour
         {
             if (canDieFromOtherPins && other.transform.GetComponent<BaseEnemy>()) //Basic käglor kan dö av varandra när de studsar på varnadra - Max
             {
+                if (collision == null) return;
+
                 Vector3 dir = collision.GetContact(0).point - transform.position; //Får riktingen mot contact point - Max 
                 dir = -dir.normalized;  //Normalizar vinkeln så att jag bara får vinkeln av vektorn - Max
 
